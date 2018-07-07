@@ -83,6 +83,7 @@ views:
               - light.hallway_2
               - light.bathroom
 
+############# MEDIA VIEW
 
   - icon: mdi:television-classic
     id: media
