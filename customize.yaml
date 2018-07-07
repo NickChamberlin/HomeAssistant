@@ -1,0 +1,117 @@
+sensor.temperature_158d0001f54c84:
+  friendly_name: Temperature
+binary_sensor.motion_sensor_158d0001e52d1e:
+  friendly_name: Bens Motion
+binary_sensor.motion_sensor_158d00022538ae:
+  friendly_name: Front Door Motion
+binary_sensor.water_leak_sensor_158d0001bbea54:
+  friendly_name: Bathroom Leak Detector
+binary_sensor.water_leak_sensor_158d0001bb9315:
+  friendly_name: Kitchen Leak Detector
+sensor.temperature_158d0001fa6f02:
+  friendly_name: Temperature
+binary_sensor.door_window_sensor_158d0001b7a9db:
+  friendly_name: Window
+  icon: mdi:window-closed
+binary_sensor.door_window_sensor_158d0002019673:
+  friendly_name: Slider Door
+  icon: mdi:door-closed
+binary_sensor.door_window_sensor_158d000201952f:
+  friendly_name: Front Door
+  icon: mdi:door
+binary_sensor.door_window_sensor_158d0001b7aa0b:
+  friendly_name: Dining Room Window
+  icon: mdi:window-closed
+sensor.temperature_158d0001f52d1f:
+  friendly_name: Temperature
+binary_sensor.door_window_sensor_158d0001fd6df9:
+  friendly_name: Window
+  icon: mdi:window-closed
+switch.bens_fan:
+  friendly_name: Bens Fan
+  icon: mdi:fan
+light.bens_lamp:
+  icon: mdi:floor-lamp
+light.kitchen:
+  icon: mdi:wall-sconce-flat
+light.blooms:
+  friendly_name: blooms
+  icon: mdi:wall-sconce-variant
+light.dining_room:
+  icon: mdi:silverware
+light.bens_room:
+  icon: mdi:ceiling-light
+light.bedroom:
+  icon: mdi:ceiling-light
+light.living_room:
+  icon: mdi:ceiling-light
+light.living_room_lamp:
+  friendly_name: Lamp
+  icon: mdi:floor-lamp
+switch.living_room_air_conditioner:
+  icon: mdi:air-conditioner
+switch.fireplace:
+  friendly_name: Fireplace
+  icon: mdi:fire
+scene.night_light:
+  icon: mdi:weather-night
+input_boolean.night_light_baby_to_sleep:
+  icon: mdi:baby
+script.1527309616362:
+  friendly_name: Night Light Baby to Sleep (voice)
+  icon: mdi:sleep
+media_player.living_room_home:
+  icon: mdi:google-home
+media_player.bens_google_home:
+  icon: mdi:google-home
+media_player.bedroom_home:
+  icon: mdi:google-home
+media_player.bedroom_tv:
+  icon: mdi:television-classic
+media_player.living_room_tv:
+  icon: mdi:television-classic
+input_text.bedroom_home:
+  custom_ui_state_card: state-card-mini-media-player
+  config:
+    player: media_player.bedroom_home
+    icon: mdi:google-home
+input_text.living_room_home:
+  custom_ui_state_card: state-card-mini-media-player
+  config:
+    player: media_player.living_room_home
+    icon: mdi:google-home
+input_text.bens_google_home:
+  custom_ui_state_card: state-card-mini-media-player
+  config:
+    player: media_player.bens_google_home
+    icon: mdi:google-home
+input_text.bedroom_tv:
+  custom_ui_state_card: state-card-mini-media-player
+  config:
+    player: media_player.bedroom_tv
+    icon: mdi:television-classic
+input_text.living_room_tv:
+  custom_ui_state_card: state-card-mini-media-player
+  config:
+    player: media_player.living_room_tv
+    icon: mdi:television-classic
+camera.apartment:
+  icon: mdi:cctv
+camera.door:
+  icon: mdi:doorbell-video
+camera.kids:
+  icon: mdi:cctv
+light.bathroom:
+  icon: mdi:toilet
+light.hallway:
+  icon: mdi:washing-machine
+light.hallway_2:
+  icon: mdi:washing-machine
+device_tracker.nicks_phone:
+  icon: mdi:human-handsdown
+device_tracker.mollys_phone:
+  icon: mdi:human-female
+light.front_door:
+  icon: mdi:lightbulb-on-outline
+light.gateway_light_7811dca47c33:
+  icon: mdi:circle-outline

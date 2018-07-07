@@ -1,0 +1,286 @@
+name: Home
+
+############# MAIN VIEW
+
+views:
+  - icon: mdi:home
+    id: home
+    title: home
+    theme: dark-mode
+    cards:
+
+      - type: picture-glance
+        image: /local/entryway_02.png
+        title: ''
+        entities:
+          - light.front_door
+          - lock.front_door
+          - device_tracker.nicks_phone
+          - device_tracker.mollys_phone
+          - camera.door
+          - camera.apartment
+
+
+      - type: picture-glance
+        image: /local/living.png
+        title: ''
+        entities:
+          - light.living_room
+          - light.living_room_lamp
+          - light.blooms
+          - sensor.temperature_158d0001f54c84
+          - camera.door
+          - switch.living_room_air_conditioner
+          - input_text.living_room_tv
+          - input_text.living_room_home
+
+
+      - type: picture-glance
+        image: /local/kitchen.png
+        title: Kitchen
+        entities:
+          - light.kitchen
+          - light.dining_room
+          - binary_sensor.water_leak_sensor_158d0001bb9315
+
+
+      - type: picture-glance
+        image: /local/bedroom.png
+        title: Bedroom
+        entities:
+          - light.bedroom
+          - light.gateway_light_7811dca47c33
+          - sensor.temperature_158d0001f52d1f
+          - binary_sensor.door_window_sensor_158d0001fd6df9
+          - input_text.bedroom_home
+          - input_text.bedroom_tv
+
+
+      - type: picture-glance
+        image: /local/kids.png
+        title: Kids
+        entities:
+          - light.bens_room
+          - light.bens_lamp
+          - switch.bens_fan
+          - sensor.temperature_158d0001fa6f02
+          - binary_sensor.door_window_sensor_158d0001b7a9db
+          - camera.kids
+          - input_text.bens_google_home
+
+
+      - type: horizontal-stack
+        cards:
+          - type: picture-glance
+            image: /local/automation_smaller_01.png
+            title: ''
+            entities:
+              - input_boolean.night_light_baby_to_sleep
+              - scene.night_light
+          - type: picture-glance
+            image: /local/hallway_smaller_01-1.png
+            entities:
+              - light.hallway_2
+              - light.bathroom
+
+
+  - icon: mdi:television-classic
+    id: media
+    title: media
+    theme: badass-mode
+    cards:
+
+      - type: vertical-stack
+        cards:
+          - type: horizontal-stack
+            cards:
+              - type: media-control
+                entity: media_player.living_room_tv
+              - type: media-control
+                entity: media_player.bedroom_tv
+
+
+      - type: vertical-stack
+        cards:
+          - type: media-control
+            entity: media_player.bedroom_home
+          - type: media-control
+            entity: media_player.bens_google_home
+
+
+      - type: vertical-stack
+        cards:
+          - type: media-control
+            entity: media_player.living_room_home
+
+
+
+############# FLOORPLAN VIEW
+
+
+
+  - icon: mdi:floor-plan
+    id: floorplan
+    title: floorplan
+    panel: true
+    theme: badass-mode
+    cards:
+      - type: picture-elements
+        image: /local/floorplan.jpg
+        elements:
+
+          # Apartment Camera
+          - type: state-icon
+            entity: camera.apartment
+            style:
+              top: 3%
+              left: 58%
+
+          # Bedroom TV
+          - type: state-icon
+            entity: media_player.bedroom_tv
+            style:
+              top: 13%
+              left: 46%
+
+          # Bedroom CC
+          - type: state-icon
+            entity: media_player.bedroom_home
+            style:
+              top: 5%
+              left: 74%
+
+          # Bedroom Temp
+          - type: state-label
+            entity: sensor.temperature_158d0001f52d1f
+            style:
+              top: 18%
+              left: 62%
+
+          # Bens Temp
+          - type: state-label
+            entity: sensor.temperature_158d0001fa6f02
+            style:
+              top: 5%
+              left: 32%
+
+          # Living Room CC
+          - type: state-icon
+            entity: media_player.living_room_home
+            style:
+              top: 70%
+              left: 43%
+
+          # Living Room TV
+          - type: state-icon
+            entity: media_player.living_room_tv
+            style:
+              top: 70%
+              left: 8%
+
+          # Bens Fan
+          - type: state-icon
+            entity: switch.bens_fan
+            style:
+              top: 13%
+              left: 35%
+
+          # Bens CC
+          - type: state-icon
+            entity: media_player.bens_google_home
+            style:
+              top: 5%
+              left: 8%
+
+          # Bens Lamp
+          - type: state-icon
+            tap_action: toggle
+            entity: light.bens_lamp
+            style:
+              top: 28%
+              left: 8%
+
+          # Bens Camera
+          - type: state-icon
+            entity: camera.kids
+            style:
+              top: 22%
+              left: 15%
+
+          # Door Camera
+          - type: state-icon
+            entity: camera.door
+            style:
+              top: 73%
+              left: 60%
+
+          # Living Room Lamp
+          - type: state-icon
+            tap_action: toggle
+            entity: light.living_room_lamp
+            style:
+              top: 61%
+              left: 8%
+
+          # Living Room Ceiling Light
+          - type: state-icon
+            tap_action: toggle
+            entity: light.living_room
+            style:
+              top: 76%
+              left: 26%
+
+          # Kitchen Light
+          - type: state-icon
+            tap_action: toggle
+            entity: light.kitchen
+            style:
+              top: 68%
+              left: 80%
+
+          # living room temp
+          - type: state-label
+            entity: sensor.temperature_158d0001f54c84
+            style:
+              top: 66%
+              left: 27%
+
+          # Bedroom light
+          - type: state-icon
+            tap_action: toggle
+            entity: light.bedroom
+            style:
+              top: 10%
+              left: 62%
+
+          # Bens Light
+          - type: state-icon
+            tap_action: toggle
+            entity: light.bens_room
+            style:
+              top: 10%
+              left: 22%
+
+          # Dining Room Light
+          - type: state-icon
+            tap_action: toggle
+            entity: light.dining_room
+            style:
+              top: 94%
+              left: 75%
+
+          # Hallway Light
+          - type: state-icon
+            tap_action: toggle
+            entity: light.hallway
+            style:
+              top: 43%
+              left: 45%
+
+          # Entryway Light
+          - type: state-icon
+            tap_action: toggle
+            entity: light.front_door
+            style:
+              top: 52%
+              left: 88%

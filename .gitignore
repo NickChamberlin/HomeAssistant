@@ -1,0 +1,13 @@
+*
+!*.yaml
+!scenes
+!.gitignore
+secrets.yaml
+known_devices.yaml
+automations.yaml
+configuration.yaml
+plex.conf
+scripts.yaml
+themes.yaml
+groups.yaml
+entity_registry.yaml
