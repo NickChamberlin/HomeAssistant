@@ -1,0 +1,242 @@
+homeassistant:
+  name: Home
+  latitude: !secret latitude_home
+  longitude: !secret longitude_home
+  elevation: !secret elevation_home
+  unit_system: imperial
+  time_zone: America/Los_Angeles
+  customize: !include customize.yaml
+
+frontend: !include frontend.yaml
+config:
+http:
+  base_url: !secret base_url
+  server_port: !secret server_port
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  api_password: !secret api_password
+  ip_ban_enabled: True
+  login_attempts_threshold: 5
+
+discovery:
+updater:
+conversation:
+history:
+logbook:
+map:
+sun:
+sensor:
+  - platform: yr
+recorder:
+cloud:
+hassio:
+wemo:
+media_extractor:
+tts:
+  - platform: google
+    cache: true
+    cache_dir: /tmp/tts
+
+
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+
+august:
+  login_method: !secret august_login_method
+  username: !secret august_username
+  password: !secret august_password
+
+
+device_tracker:
+  - platform: bluetooth_tracker
+    consider_home: 500
+    new_device_defaults:
+      track_new_devices: False
+      hide_if_away: False
+
+
+hue:
+  bridges:
+    - host: !secret hue_bridge_host_ip
+      allow_unreachable: true
+      allow_hue_groups: true
+
+
+xiaomi_aqara:
+  gateways:
+    - key: !secret xiaomi_key
+  discovery_retry: 15
+
+
+cast:
+  media_player:
+  - host: !secret cast_bens_home_ip
+  - host: !secret cast_br_tv_ip
+  - host: !secret cast_br_home_ip
+  - host: !secret cast_lr_tv_ip
+  - host: !secret cast_lr_home_ip
+
+
+camera:
+  - platform: foscam
+    name: Apartment
+    ip: !secret foscam_ip
+    username: !secret foscam_username
+    password: !secret foscam_password
+  - platform: generic
+    name: Door
+    still_image_url: !secret door_cam_still_image_url
+    framerate: 2
+  - platform: amcrest
+
+
+amcrest:
+  - host: !secret amcrest_host_ip
+    name: Kids
+    username: !secret amcrest_username
+    password: !secret amcrest_password
+    resolution: high
+    stream_source: snapshot
+    # resolution: high
+
+
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_bot_api_key
+    allowed_chat_ids:
+      - !secret telegram_bot_allowed_chat_ids
+      # - CHAT_ID_2
+
+
+notify:
+  - name: !secret notify_name
+    platform: telegram
+    chat_id: !secret notify_chat_id
+
+
+input_boolean:
+  night_light_baby_to_sleep:
+    name: "Night Light Baby to Sleep"
+
+
+input_text:
+#speakers
+  bens_google_home:
+    name: 'Google Home'
+    icon: mdi:google-home
+  living_room_home:
+    name: 'Google Home'
+    icon: mdi:google-home
+  bedroom_home:
+    name: 'Google Home'
+    icon: mdi:google-home
+#tv
+  bedroom_tv:
+    name: 'Chromecast'
+    icon: mdi:television-classic
+  living_room_tv:
+    name: 'Chromecast'
+    icon: mdi:television-classic
+
+
+input_select:
+  little_einsteins:
+    name: Little Einsteins
+    options:
+      - Mouse on the Moon
+      - Annies Solo Mission
+      - How we became Little Einsteins
+      - Jump for Joey
+      - A Tall Totem Tale
+      - The Northern Night Lights
+      - Duck Duck June
+      - Rocket Safari
+      - None
+    initial: None
+    icon: mdi:plex
+  chromecast_select:
+    name: Chromecast
+    options:
+      - Living Room
+      - Bedroom
+      - None
+    initial: Living Room
+    icon: mdi:cast
+
+
+switch:
+  - platform: broadlink
+    friendly_name: IR Blaster
+    host: !secret broadlink_host_ip
+    mac: !secret broadlink_mac
+    type:  rm_mini
+    timeout: 15
+    switches:
+      tv_funai:
+        friendly_name: "Television"
+        command_on: 'JgBQAAABJpMRExMSEjgSEhMRExMRExI1FBMUERITERQQFBI3EzcPORIUERITExITERMSNxITEhIUNhA5FjMSNxQ2ExISNxI4EgAFhgABJksQAA0FAAAAAAAAAAA='
+        command_off: 'JgBQAAABJpMTEBYREzUUEhISERQSExI2FBETEhITEhITEhM2FDUUNhETFRAUERITFRASNhMSExITNhM2FDYUNRI3ExITNhQ1EgAFhwABJkkTAA0FAAAAAAAAAAA='
+      fireplace:
+        friendly_name: "Fireplace"
+        command_on: 'JgBQAAABKZITNxgNFRISERURFw8TEBkNFBAZMhUzFTUYMRYzFzQXMRUTEhIYMBURFTQYDhQSFQ4YMhQ2FQ8ZMBUSFTMYMRU2FAAFIAABKEwUAA0FAAAAAAAAAAA='
+        command_off: 'JgBQAAABKZITNxgNFRISERURFw8TEBkNFBAZMhUzFTUYMRYzFzQXMRUTEhIYMBURFTQYDhQSFQ4YMhQ2FQ8ZMBUSFTMYMRU2FAAFIAABKEwUAA0FAAAAAAAAAAA='
+      bedroom_air_conditioner:
+        friendly_name: "Air Conditioner"
+        command_on: 'JgBQAAABK5IVEBYQFRAVEBY1FRAVEBYQFTUVNRY0FhAVEBY1FTUVNRURFRAVEBYQFRAWEBUQFRAWNRU1FTUVNRY1FTUVNRU1FgAFQAABK0cWAA0FAAAAAAAAAAA='
+        command_off: 'JgBQAAABK5IVEBYQFRAVEBY1FRAVEBYQFTUVNRY0FhAVEBY1FTUVNRURFRAVEBYQFRAWEBUQFRAWNRU1FTUVNRY1FTUVNRU1FgAFQAABK0cWAA0FAAAAAAAAAAA='
+      living_room_air_conditioner:
+        friendly_name: "Air Conditioner"
+        command_on: 'JgC4AJWREzcSEhMTERITEhURERMSExMSEjcTERMTETgUNRM2EzcTNxM2ExITEhIAAmiUkhI2ExIRFBISEhQRExQRExETEhM2FRESEhM3EjcSOBE4EjcTNxMSERMTAAJpk48WNhETFBESExITExIRExMSEhMRORETEhMSNxQ1EzcTNhQ2EzcSEhMSEQACapSSEjYUERMSEhMSExETExISEhMSFDYSExISEzcTNhQ2EzYSNxM3ExISEhMADQU='
+        command_off: 'JgC4AJWREzcSEhMTERITEhURERMSExMSEjcTERMTETgUNRM2EzcTNxM2ExITEhIAAmiUkhI2ExIRFBISEhQRExQRExETEhM2FRESEhM3EjcSOBE4EjcTNxMSERMTAAJpk48WNhETFBESExITExIRExMSEhMRORETEhMSNxQ1EzcTNhQ2EzcSEhMSEQACapSSEjYUERMSEhMSExETExISEhMSFDYSExISEzcTNhQ2EzYSNxM3ExISEhMADQU='
+
+
+scene:
+  - name: Night Light
+    entities:
+      light.front_door:
+        state: off
+      light.hallway:
+        state: off
+      light.kitchen:
+        state: off
+      light.dining_room:
+        state: off
+      light.living_room:
+        state: off
+      light.living_room_lamp:
+        state: off
+      light.kitchen_1_color:
+        state: on
+        brightness: 25
+        rgb_color: [255,69,220]
+        transition: 1
+      light.blooms:
+        state: on
+        brightness: 100
+        rgb_color: [255,69,220]
+        transition: 3
+  - name: Night Light color on
+    entities:
+      light.kitchen_1_color:
+        state: on
+        brightness: 25
+        rgb_color: [255,69,220]
+        transition: 1
+  - name: Night Light Baby to Sleep on
+    entities:
+      light.bens_lamp:
+        state: on
+        brightness: 25
+        rgb_color: [255,69,220]
+        transition: 1
+      light.hallway:
+        state: on
+        brightness: 1
+        transition: 5
+  - name: Night Light Baby to Sleep off
+    entities:
+      light.bens_lamp:
+        state: off
+      light.hallway:
+        state: off
